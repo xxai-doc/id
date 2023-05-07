@@ -7,3 +7,4 @@ Kode ujung depan situs web adalah sumber terbuka, selamat datang untuk membantu 
 * [kode ujung depan](https://github.com/xxai-art/web)
 * [Paket bahasa untuk situs secara keseluruhan](https://github.com/xxai-art/web/tree/main/i18n)
 * [Paket bahasa untuk modul login](https://github.com/wacpkg/user/tree/main/ui.i18n)
+* [Dokumentasi Multibahasa Situs Web](https://github.com/xxai-doc)
