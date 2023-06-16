@@ -17,14 +17,14 @@ Bahasa pemrograman front-end adalah [@w5/coffee_plus](http://npmjs.com/@w5/coffe
 
 Membangun pada 3 proyek berikut
 
-### [@w5/mdt](https://www.npmjs.com/package/@w5/mdt)
+* [@w5/mdt](https://www.npmjs.com/package/@w5/mdt)
 
-Template penurunan harga, dengan akhiran `.mdt` , dapat merujuk ke file eksternal dengan sintaks yang mirip dengan `<+ ./coffee_plus/import.js>` .
+  Akhirannya adalah `.mdt` , Anda dapat menggunakan sintaks yang mirip dengan `<+ ./coffee_plus/import.js>` untuk merujuk ke file eksternal, dan menghasilkan penurunan harga dengan akhiran `.md` .
 
-[@w5/trmd](https://www.npmjs.com/package/@w5/trmd)
+* [@w5/trmd](https://www.npmjs.com/package/@w5/trmd)
 
-Terjemahan penurunan harga tidak akan menerjemahkan kode dan tautan, dan akan meng-cache kalimat yang diterjemahkan. Jika terjemahan diubah tetapi teks asli tidak diubah, mengeksekusinya lagi tidak akan menimpa perubahan terjemahan.
+  Terjemahan penurunan harga tidak akan menerjemahkan kode dan tautan, dan akan meng-cache kalimat yang diterjemahkan. Jika terjemahan diubah tetapi teks asli tidak diubah, mengeksekusinya lagi tidak akan menimpa perubahan terjemahan.
 
-[@w5/i18n](https://www.npmjs.com/package/@w5/i18n)
+* [@w5/i18n](https://www.npmjs.com/package/@w5/i18n)
 
-File bahasa untuk menerjemahkan situs web yang dihasilkan `yaml` .
+  File bahasa untuk menerjemahkan situs web yang dihasilkan `yaml` .
