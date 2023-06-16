@@ -1,8 +1,8 @@
 <p align="center"><a href="https://xxai.art"><img src="https://cdn.jsdelivr.net/gh/xxai-art/doc/logo.svg"/></a><br/><a href="https://xxai.art"><img src="https://cdn.jsdelivr.net/gh/xxai-art/doc/xxai.svg"/></a></p><p align="center"><a href="https://github.com/xxai-art/doc#readme"><img alt="I18N" src="https://cdn.jsdelivr.net/gh/wactax/img/t.svg"/></a>　<a href="https://groups.google.com/u/0/g/xxai-art"><img alt="Google Groups" src="https://cdn.jsdelivr.net/gh/wactax/img/g-groups.svg"/></a></p>
 
-# xxAI.art
+Disarankan untuk menginstal nodejs, [direnv](https://direnv.net) , [bun](https://github.com/oven-sh/bun) terlebih dahulu, lalu `direnv allow` setelah memasuki direktori ( [.envrc](https://github.com/xxai-art/doc/blob/main/.envrc) akan dijalankan secara otomatis setelah memasuki direktori).
 
-Bagian dari kode situs web adalah sumber terbuka, selamat datang untuk membantu mengoptimalkan terjemahan.
+Artinya adalah: terjemahan bahasa Mandarin ke bahasa Jepang, Korea, Inggris, Inggris terjemahan ke semua bahasa lainnya. Jika Anda hanya ingin mendukung bahasa Cina dan Inggris, Anda dapat menulis `zh: en` .
 
 ## kode ujung depan
 
@@ -28,3 +28,51 @@ Membangun pada 3 proyek berikut
 * [@w5/i18n](https://www.npmjs.com/package/@w5/i18n)
 
   File bahasa untuk menerjemahkan situs web yang dihasilkan `yaml` .
+
+### Petunjuk Otomasi Terjemahan Dokumen
+
+Lihat repositori kode [xxai-art/doc](https://github.com/xxai-art/doc)
+
+Disarankan untuk menginstal nodejs, [direnv](https://direnv.net) , [bun](https://github.com/oven-sh/bun) terlebih dahulu, lalu `direnv allow` setelah memasuki direktori ( [.envrc](https://github.com/xxai-art/doc/blob/main/.envrc) akan dijalankan secara otomatis setelah memasuki direktori).
+
+Untuk menghindari basis kode besar yang diterjemahkan ke dalam ratusan bahasa, saya membuat basis kode terpisah untuk setiap bahasa dan membuat organisasi untuk menyimpan basis kode
+
+Mengatur variabel lingkungan `GITHUB_ACCESS_TOKEN` lalu menjalankan [create.github.coffee](https://github.com/xxai-art/doc/blob/main/create.github.coffee) akan secara otomatis membuat repositori kode.
+
+Tentu saja, Anda juga bisa memasukkannya ke dalam basis kode.
+
+Referensi skrip terjemahan [run.sh](https://github.com/xxai-art/doc/blob/main/run.sh)
+
+Kode skrip ditafsirkan sebagai berikut:
+
+[bunx](https://bun.sh/docs/cli/bunx) adalah pengganti npx, yang lebih cepat. Tentu saja, jika Anda belum menginstal bun, Anda dapat menggunakan `npx` sebagai gantinya.
+
+`bunx mdt zh` merender `.mdt` di direktori zh sebagai `.md` , lihat 2 file tertaut di bawah
+
+* [coffee_plus.mdt](https://github.com/xxai-doc/zh/blob/main/coffee_plus.mdt)
+* [coffee_plus.md](https://github.com/xxai-doc/zh/blob/main/coffee_plus.md)
+
+`bunx i18n` adalah kode inti untuk terjemahan (jika Anda hanya menginstal `nodejs` , tetapi `bun` dan `direnv` tidak diinstal, Anda juga dapat menjalankan `npx i18n` untuk menerjemahkan).
+
+Ini akan menguraikan [i18n.yml](https://github.com/xxai-art/doc/blob/main/i18n.yml) , konfigurasi `i18n.yml` dalam dokumen ini adalah sebagai berikut:
+
+```
+en:
+zh: ja ko en
+```
+
+Artinya adalah: terjemahan bahasa Mandarin ke bahasa Jepang, Korea, Inggris, Inggris terjemahan ke semua bahasa lainnya. Jika Anda hanya ingin mendukung bahasa Cina dan Inggris, Anda dapat menulis `zh: en` .
+
+Yang terakhir adalah [gen.README.coffee](https://github.com/xxai-art/doc/blob/main/gen.README.coffee) , yang mengekstrak konten antara judul utama dan subjudul pertama dari `README.md` setiap bahasa untuk menghasilkan entri `README.md` . Kodenya sangat sederhana, Anda bisa melihatnya sendiri.
+
+Google API digunakan untuk terjemahan gratis. Jika Anda tidak dapat mengakses Google, harap konfigurasikan dan atur proxy, seperti:
+
+```
+export https_proxy=http://127.0.0.1:7890 http_proxy=http://127.0.0.1:7890 all_proxy=socks5://127.0.0.1:7890
+```
+
+Skrip terjemahan akan menghasilkan cache terjemahan di direktori `.i18n` , harap periksa dengan `git status` dan tambahkan ke repositori kode untuk menghindari terjemahan berulang.
+
+Jalankan `bunx i18n` setiap kali Anda memodifikasi terjemahan untuk memperbarui cache.
+
+Jika teks asli dan terjemahannya diubah pada saat yang sama, cache akan bingung, jadi jika Anda ingin memodifikasi, Anda hanya dapat memodifikasi satu, lalu jalankan `bunx i18n` untuk memperbarui cache.
