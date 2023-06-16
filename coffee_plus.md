@@ -2,13 +2,13 @@
 
 [@w5/coffee_plus](http://npmjs.com/@w5/coffee_plus) , tambahkan beberapa fitur berdasarkan sintaks coffeescript, lihat [coffee_plus](./coffee_plus.md) .
 
-* mendeklarasikan variabel
+## mendeklarasikan variabel
 
 ```
 + var1, var2
 ```
 
-* label deklarasi
+## label deklarasi
 
 `:$` untuk digunakan dengan [svelte](https://svelte.dev/docs#component-format-script-3-$-marks-a-statement-as-reactive) .
 
@@ -90,7 +90,7 @@ $ : (func = function() {
 });
 ```
 
-* impor cepat
+## impor cepat
 
 ```
 > zx/globals:
